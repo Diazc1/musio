@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :songs, except: [:new]
-  resources :users
+  resources :songs
+  resources :users, except: [:new]
 
   get '/signup', to: 'users#new'
 
