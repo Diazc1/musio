@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
     #only use for signing a user in
     def login 
-        @user = User.new
     end
 
     def create
