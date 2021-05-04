@@ -1,13 +1,32 @@
 <h1> Log In Here: </h1>
 
+
 <%= form_with url: "/login" do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %>
-
+    <br>
+    <br>
     <%= f.label :password %>
     <%= f.password_field :password %>
+    <br>
+    <br>
     <%= f.submit 'Log In' %>
 <% end %>
+
+<br>
+
+    <div class="mb-3">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+        <label class="form-check-label" for="dropdownCheck">
+          Remember me
+        </label>
+      </div>
+    </div>
+
+<a class="dropdown-item" href="/signup">New around here? Sign up</a>
+
+<br>
 
 <h3> Or Login with Google: </h3>
 
