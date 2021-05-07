@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :songs
-  resources :users, only: [:new, :create, :show]
+
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
@@ -13,6 +11,18 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
+  get 'search', to: 'songs#search', as: 'search'
+  
+  resources :users, only: [:new, :create, :show]
+  resources :comments
+
+  
+  resources :songs do
+    resources :comments, only: [:index, :new, :create]
+  end
+
+ 
+  
 
 
 
