@@ -1,0 +1,25 @@
+<h1> <%= @song.name %> </h1>
+
+<div>
+    <p> Artist Name: <%= @song.artist_name %> </p>
+    <p> Genre: <%= @song.genre %> </p>
+    <p> Lyrics: <br><br> <%= @song.lyrics %> </p>
+</div>
+
+<br>
+<br>
+<br>
+<h4> Comments: </h4>
+<%= link_to "See All Comments", song_comments_path(@song) %>
+<br>
+
+<% @song.comments.each do |comment| %>
+<p> <%= comment.user.username %> says: <%= comment.content %> </p>
+<% end %>
+
+<br>
+
+
+<%= link_to 'Back', songs_path %>
+<br>
+<%= link_to 'Edit', edit_song_path(@song) %>

@@ -1,0 +1,9 @@
+<h4> Let us know what you think of the song! </h4>
+<br>
+<%= form_with model: @comment do |f| %>
+
+    <%= f.label :Comment %>
+    <%= f.text_field :content %>
+    <%= f.submit %>
+
+<% end %>
