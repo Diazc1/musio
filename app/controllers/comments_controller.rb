@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
     before_action :find_song, only: [:index, :show, :new, :create]
 
     def index 
-        
         if @song
             @comments = @song.comments
         else
@@ -14,18 +13,16 @@ class CommentsController < ApplicationController
         if @song
             @comment = @song.comments.find_by(id: params[:id])
         else 
-            @comment = Comment.find(params[:id])
+            find_comment 
         end
     end
 
     def new 
-
         @comment = Comment.new
     end
 
 
     def create
-
         @comment = @song.comments.build(comment_params)
 
         if @comment.valid?
@@ -37,11 +34,11 @@ class CommentsController < ApplicationController
     end
 
     def edit
-        @comment = Comment.find(params[:id])
+        find_comment 
     end
 
     def update
-        @comment = Comment.find(params[:id])
+        find_comment 
 
         @comment.update(comment_params)
 
@@ -55,8 +52,7 @@ class CommentsController < ApplicationController
 
 
     def destroy
-        @comment = Comment.find(params[:id])
-        @comment.destroy
+        find_comment.destroy
         redirect_to comments_path
     end
 

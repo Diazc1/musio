@@ -10,8 +10,7 @@ class SongsController < ApplicationController
     end
 
     def show
-        @song = Song.find_by_id(params[:id])
-        @comment = Comment.new
+        find_song
     end
 
     def new
@@ -29,11 +28,11 @@ class SongsController < ApplicationController
     end
 
     def edit
-        @song = Song.find_by_id(params[:id])
+        find_song
     end
 
     def update 
-        @song = Song.find_by_id(params[:id])
+        find_song
         @song.update(song_params)
 
         if @song.save
@@ -44,7 +43,7 @@ class SongsController < ApplicationController
     end
 
     def destroy
-        Song.find_by_id(params[:id]).destroy
+        find_song.destroy
         redirect_to songs_path
     end
 

@@ -9,22 +9,19 @@
 <br>
 <br>
 <br>
+
 <h4> Comments: </h4>
-<%= link_to "See All Comments", song_comments_path(@song) %>
+    <%= link_to "See All Comments", song_comments_path(@song) %>
 <br>
 
-<% @song.comments.each do |comment| %>
-<p> <%= comment.user.username %> says: <%= comment.content %> </p>
-<% end %>
-
+    <% @song.comments.each do |comment| %>
+        <p> <%= comment.user.username %> says: <%= comment.content %> </p>
+    <% end %>
 
 
 <br>
-
-
-<%= link_to 'Back', songs_path %>
+    <%= link_to 'Back', songs_path %>
 <br>
-<%= link_to 'Edit', edit_song_path(@song) %>
+    <%= link_to 'Edit', edit_song_path(@song) %>
 <br>
-<%= link_to 'Delete Song', song_path(@song), method: 'delete' %>
-
+    <%= link_to 'Delete Song', song_path(@song), method: 'delete' %>

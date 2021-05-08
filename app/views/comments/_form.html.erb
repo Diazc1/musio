@@ -1,0 +1,7 @@
+<%= form_with(model: [@song, @comment]) do |c| %>
+    <%= c.hidden_field :user_id, value: current_user.id %>
+    <%= c.hidden_field :song_id, value: @song.id %>
+    <%= c.label :Comment %>
+    <%= c.text_field :content %>
+    <%= c.submit %>
+<% end %>

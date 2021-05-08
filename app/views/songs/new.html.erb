@@ -14,24 +14,4 @@
 <% end %>
 
 
-
-<%= form_with model: @song do |f| %>
-
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.label :artist_name %>
-    <%= f.text_field :artist_name %>
-
-    <%= f.label :genre %>
-    <%= f.text_field :genre %>
-
-    <br>
-    <%= f.label :lyrics %>
-    <br>
-    <%= f.text_area :lyrics, :cols => 90, :rows => 10 %>
-
-    <br>
-    <%= f.submit%>
-
-<% end %>
+<%= render partial: "form" %> 
