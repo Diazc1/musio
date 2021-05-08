@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
-    before_action :find_song, only: [:index, :new, :create]
+    before_action :find_song, only: [:index, :show, :new, :create]
 
     def index 
+        
         if @song
             @comments = @song.comments
         else
@@ -9,37 +10,53 @@ class CommentsController < ApplicationController
         end
     end
 
-    def new 
+    def show
         if @song
-            @comment = @song.comments.build
-        else
-            @comment = Comment.new
-            @comment.build_song
+            @comment = @song.comments.find_by(id: params[:id])
+        else 
+            @comment = Comment.find(params[:id])
         end
+    end
+
+    def new 
+
+        @comment = Comment.new
     end
 
 
     def create
-        if @song
-            @comment = @song.comments.build(comment_params)
-        else
-            @comment = Comment.new(comment_params)
-        end
 
-        if @comment.save
-            redirect_to comment_path(@comment)
+        @comment = @song.comments.build(comment_params)
+
+        if @comment.valid?
+            @comment.save
+            redirect_to song_comment_path(@song, @comment)
         else
             render :new
         end
     end
 
-    def show
-        @comment = Comment.find_by(params[:comment_id])
+    def edit
+        @comment = Comment.find(params[:id])
+    end
+
+    def update
+        @comment = Comment.find(params[:id])
+
+        @comment.update(comment_params)
+
+        if @comment.save
+            redirect_to @comment
+        else
+            render :edit
+        end
     end
 
 
+
     def destroy
-        Comment.find_by(params[:comment_id]).destroy
+        @comment = Comment.find(params[:id])
+        @comment.destroy
         redirect_to comments_path
     end
 
@@ -48,11 +65,11 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.require(:comment).permit(:content, :user_id, :song_id, user_attributes:[:username])
+        params.require(:comment).permit(:content, :user_id, :song_id)
     end
 
     def find_song
-        @song = Song.find_by(params[:song_id])
+        @song = Song.find_by(id: params[:song_id])
     end
 
 

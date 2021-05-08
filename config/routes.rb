@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   
   resources :songs do
-    resources :comments, only: [:index, :new, :create]
+    resources :comments
   end
 
  

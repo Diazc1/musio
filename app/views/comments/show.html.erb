@@ -3,4 +3,8 @@
 <h2> Perfect! You just left a comment! </h2>
 
 <%= render partial: "comment", locals: {c: @comment} %>
-<%= button_to "Delete", comment_path(@comment), method: 'delete' %>
+
+<%= button_to "Delete", song_comment_path(@comment), method: 'delete' %>
+
+
+

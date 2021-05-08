@@ -1,4 +1,4 @@
-<h4> Let us know what you think of <%= @song.name %>! </h4>
+<h4> Edit your comment  </h4>
 <br>
 <%= form_with(model: [@song, @comment]) do |c| %>
     <%= c.hidden_field :user_id, value: current_user.id %>

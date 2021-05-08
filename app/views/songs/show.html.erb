@@ -17,9 +17,14 @@
 <p> <%= comment.user.username %> says: <%= comment.content %> </p>
 <% end %>
 
+
+
 <br>
 
 
 <%= link_to 'Back', songs_path %>
 <br>
 <%= link_to 'Edit', edit_song_path(@song) %>
+<br>
+<%= link_to 'Delete Song', song_path(@song), method: 'delete' %>
+
